@@ -1,10 +1,12 @@
 //declare variables
-float g;
+
 int count = 3000;
 PVector[] loc = new PVector [count];
 float []diam = new float [count];
 PVector[] vel = new PVector [count];
 float []x = new float [count];
+float [] g = new float [count];
+
 void setup() {
   //set size of canvas
   frameRate(150);
@@ -14,7 +16,7 @@ void setup() {
     loc[i] = new PVector(width/2, height/2); 
     diam[i] = random(4, 6);
     vel[i] = PVector.random2D();
-    g =.1;
+    g[i] = PVector.2D(0,1);
   }
 }
 

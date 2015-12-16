@@ -1,5 +1,5 @@
 //declare variables
-int count = 3000;
+int count = 50000;
 int colors = 0;
 PVector []acc = new PVector [count];
 PVector[] loc = new PVector [count];
@@ -10,11 +10,11 @@ PVector[] vel = new PVector [count];
 void setup() {
   //set size of canvas
 
-  size(800, 600);
+  size(1000, 800);
   for (int i=0; i < count; i++) {
     //initialize variables
     loc[i] = new PVector(width/2, height/2); 
-    diam[i] = 2;
+    diam[i] = .5;
     vel[i] =PVector.random2D();
     vel[i].mult(1); 
     acc[i] = PVector.random2D();
@@ -27,13 +27,14 @@ void setup() {
 void draw() {
   //draw background to cover previous frame
   // background(0, 0,0, 10);
- 
+     fill(0,3);
+  rect(0,0,width,height);
   //  background(0);
   for (int i=0; i < count; i++) {
     //draw ball
-     fill(0, 0, 0,  10);
-  rect(width, height, width, height);
-     fill(frameCount%60, 100, 100, 10);
+
+    
+     fill(frameCount%360, 100, 100, 100);
     acc[i] = PVector.random2D();
     acc[i].mult(.3); 
     vel[i].add(acc[i]); 
@@ -48,17 +49,17 @@ void draw() {
 
     //wrap the ball's position
 
-    if (loc[i].x >= width/1.5) {
+    if (loc[i].x >= width) {
       loc[i].x = width/2;    //if the ball hits the right wall go to left wall
       loc[i].y = height/2 ;
-    } else if (loc[i].x <= width/3) {
+    } else if (loc[i].x <= 0) {
       loc[i].x = width/2;     //if the ball hits the left wall go to right wall
       loc[i].y = height/2 ;
     }
-    if (loc[i].y >= height/1.5) {
+    if (loc[i].y >= height) {
       loc[i].y = height/2;
       loc[i].x = width/2;
-    } else if (loc[i].y <= height/3) {
+    } else if (loc[i].y <= 0) {
       loc[i].y = height/2 ;
       loc[i].x = width/2;
     }
